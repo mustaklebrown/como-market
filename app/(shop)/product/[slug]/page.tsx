@@ -76,7 +76,7 @@ export default async function ProductDetails({ params }: { params: { slug: strin
                         },
                         "offers": {
                             "@type": "Offer",
-                            "url": `https://como-market.com/product/${product.slug}`,
+                            "url": `https://como-market.vercel.app/product/${product.slug}`,
                             "priceCurrency": "USD",
                             "price": product.discountPrice || product.price,
                             "availability": "https://schema.org/InStock"

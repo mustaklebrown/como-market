@@ -35,7 +35,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://como-market.com",
+    url: "https://como-market.vercel.app",
     siteName: "Como Market",
     title: "Como Market | Premium Marketplace",
     description: "Discover the best products at Como Market. Shop for premium electronics, fashion, and lifestyle essentials.",
@@ -87,8 +87,8 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "Organization",
               "name": "Como Market",
-              "url": "https://como-market.com",
-              "logo": "https://como-market.com/logo.png",
+              "url": "https://como-market.vercel.app",
+              "logo": "https://como-market.vercel.app/logo.png",
               "sameAs": [
                 "https://facebook.com/comomarket",
                 "https://twitter.com/comomarket",
@@ -109,10 +109,10 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "WebSite",
               "name": "Como Market",
-              "url": "https://como-market.com",
+              "url": "https://como-market.vercel.app",
               "potentialAction": {
                 "@type": "SearchAction",
-                "target": "https://como-market.com/search?q={search_term_string}",
+                "target": "https://como-market.vercel.app/search?q={search_term_string}",
                 "query-input": "required name=search_term_string"
               }
             }),

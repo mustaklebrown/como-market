@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next';
 import { getProducts, getCategories } from '@/services/product.service';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = 'https://como-market.com';
+  const baseUrl = 'https://como-market.vercel.app';
 
   // Fetch all products and categories
   const products = await getProducts();

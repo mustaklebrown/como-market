@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: ['/admin/', '/api/'],
     },
-    sitemap: 'https://como-market.com/sitemap.xml',
+    sitemap: 'https://como-market.vercel.app/sitemap.xml',
   };
 }
