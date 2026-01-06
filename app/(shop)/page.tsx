@@ -7,6 +7,8 @@ import NewsletterSection from "@/components/shop/NewsletterSection";
 import TestimonialsSection from "@/components/shop/TestimonialsSection";
 import { getFeaturedProducts, getCategories } from "@/services/product.service";
 
+export const revalidate = 3600; // Optimize for Vercel (1 hour)
+
 export default async function Page() {
     const [products, categories] = await Promise.all([
         getFeaturedProducts(),

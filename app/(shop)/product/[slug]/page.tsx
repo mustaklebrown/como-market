@@ -5,9 +5,18 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 import ProductTabs from "@/components/shop/ProductTabs";
-import { getProductBySlug } from "@/services/product.service";
+import { getProductBySlug, getProducts } from "@/services/product.service";
 import AddToCartSection from "@/components/shop/AddToCartSection";
 import type { Metadata, ResolvingMetadata } from "next";
+
+export async function generateStaticParams() {
+    const products = await getProducts();
+    return products.map((product) => ({
+        slug: product.slug,
+    }));
+}
+
+export const revalidate = 3600; // Optimize for Vercel (1 hour)
 
 export async function generateMetadata(
     { params }: { params: { slug: string } },

@@ -10,6 +10,8 @@ export const metadata: Metadata = {
     description: "Browse our wide range of premium products, from electronics to lifestyle essentials.",
 };
 
+export const revalidate = 3600; // Optimize for Vercel (1 hour)
+
 export default async function ProductsPage({
     searchParams,
 }: {

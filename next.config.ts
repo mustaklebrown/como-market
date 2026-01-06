@@ -1,8 +1,11 @@
 import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  reactStrictMode: true,
+  poweredByHeader: false,
+  compress: true,
   images: {
+    /* ... existing remotePatterns ... */
     remotePatterns: [
       {
         protocol: 'https',
@@ -33,6 +36,11 @@ const nextConfig: NextConfig = {
         hostname: 'shop.atlantictechnology.com',
       },
     ],
+  },
+  logging: {
+    fetches: {
+      fullUrl: true,
+    },
   },
 };
 
