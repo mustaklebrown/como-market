@@ -7,6 +7,40 @@ import { cn } from "@/lib/utils";
 import ProductTabs from "@/components/shop/ProductTabs";
 import { getProductBySlug } from "@/services/product.service";
 import AddToCartSection from "@/components/shop/AddToCartSection";
+import type { Metadata, ResolvingMetadata } from "next";
+
+export async function generateMetadata(
+    { params }: { params: { slug: string } },
+    parent: ResolvingMetadata
+): Promise<Metadata> {
+    const { slug } = await params;
+    const product = await getProductBySlug(slug);
+
+    if (!product) {
+        return {
+            title: "Product Not Found",
+        };
+    }
+
+    const previousImages = (await parent).openGraph?.images || [];
+
+    return {
+        title: product.name,
+        description: product.description.substring(0, 160),
+        openGraph: {
+            title: product.name,
+            description: product.description.substring(0, 160),
+            images: [product.images[0], ...previousImages],
+            type: "article",
+        },
+        twitter: {
+            card: "summary_large_image",
+            title: product.name,
+            description: product.description.substring(0, 160),
+            images: [product.images[0]],
+        },
+    };
+}
 
 export default async function ProductDetails({ params }: { params: { slug: string } }) {
     const { slug } = await params;
@@ -18,6 +52,29 @@ export default async function ProductDetails({ params }: { params: { slug: strin
 
     return (
         <div className="pt-32 pb-24 bg-background min-h-screen">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                    __html: JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "Product",
+                        "name": product.name,
+                        "image": product.images,
+                        "description": product.description,
+                        "brand": {
+                            "@type": "Brand",
+                            "name": "Como Market"
+                        },
+                        "offers": {
+                            "@type": "Offer",
+                            "url": `https://como-market.com/product/${product.slug}`,
+                            "priceCurrency": "USD",
+                            "price": product.discountPrice || product.price,
+                            "availability": "https://schema.org/InStock"
+                        }
+                    }),
+                }}
+            />
             <div className="container max-w-7xl mx-auto px-6 lg:px-8">
                 {/* Breadcrumbs */}
                 <nav className="flex items-center gap-2 mb-8 text-sm text-muted-foreground">

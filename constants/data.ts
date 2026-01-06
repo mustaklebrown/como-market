@@ -15,6 +15,7 @@ export interface ICategory {
   slug: string;
   description?: string | null;
   image?: string | null;
+  updatedAt?: Date;
 }
 
 export interface IProduct {
@@ -33,6 +34,7 @@ export interface IProduct {
   features: string[];
   details?: any;
   createdAt?: Date;
+  updatedAt?: Date;
 }
 
 export const navlinks: NavLink[] = [

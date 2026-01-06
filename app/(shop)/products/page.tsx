@@ -3,6 +3,12 @@ import ProductCard from "@/components/shop/ProductCard";
 import { getProducts } from "@/services/product.service";
 import ProductFilters from "@/components/shop/ProductFilters";
 import { Suspense } from "react";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: "All Products",
+    description: "Browse our wide range of premium products, from electronics to lifestyle essentials.",
+};
 
 export default async function ProductsPage({
     searchParams,
